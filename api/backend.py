@@ -5,13 +5,10 @@ import uuid
 from typing import Optional
 from bs4 import BeautifulSoup as bs
 from fastapi import FastAPI
-
-
-def Extract(lst):
-    return [item[0] for item in lst]
-
+from api.routes import apiRoutes
 
 app = FastAPI()
+app.register_blueprint(apiRoutes, url_prefix="/api")
 
 # TODO: Find a way to specify which city you want to search.
 @app.get("/cities/")
@@ -37,13 +34,12 @@ async def get_name(name, page: int = 0, subject: str = ""):
         content_lxml = bs(r.content, "lxml")
         content_soup = bs(r.content, "html.parser")
         #  TODO: Regex to find the sku for this site.
-        craigslist_rows = content_soup.find_all("li", class_="result-row")
+        rows = content_soup.find_all("li", class_="result-row")
         list_assets = list(content_lxml.select(".result-image[data-ids]"))
-        ids = [item["data-ids"].replace("1:", "").replace("3:", "").split(",")[0] for item in list_assets]
-
-        list_of_images = [image_url.format(j) for i in ids for j in i.split(",")]
+        ids = [item[0]["data-ids"].replace("3:", "") for item in list_assets]
+        list_of_images = [image_url.format(j) for i[0] in ids for j in i.split(",")]
         full_product = []
-        for item, image in zip(craigslist_rows, list_of_images):
+        for item, image in zip(rows, list_of_images):
             price = item.a.text.strip()
             time_meta = item.find("time", class_="result-date")
             time = time_meta["datetime"]
