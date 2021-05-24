@@ -1,0 +1,13 @@
+[tool.black]
+line-length = 120
+target-version = ['py36']
+exclude = '''
+(
+  /(
+      \.git         # exclude a few common directories in the
+    | \.__pycache__          # root of the project
+    | \.venv
+    | docs
+  )/
+)
+'''
