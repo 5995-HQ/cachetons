@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException
 
-from ..dependencies import get_token_header
+# from ..dependencies import get_token_header
 
 router = APIRouter(
     prefix="/api/v1/ebay",
     tags=["ebay"],
-    dependencies=[Depends(get_token_header)],
+    # dependencies=[Depends(get_token_header)],
     responses={404: {"description": "Not found"}},
 )
 

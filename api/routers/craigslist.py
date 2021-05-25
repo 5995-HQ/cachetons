@@ -1,22 +1,25 @@
 import requests
 
 from bs4 import BeautifulSoup as bs
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, HTTPException  #  Depends,
 
 
 router = APIRouter()
 
-from ..dependencies import get_token_header
 
-router = APIRouter(
-    prefix="/api/v1/craigslist",
-    tags=["craigsist"],
-    dependencies=[Depends(get_token_header)],
-    responses={404: {"description": "Not found"}},
-)
+# from ..dependencies import get_token_header
+
+# router = APIRouter(
+# prefix="/api/v1/craigslist",
+# tags=["craigsist"],
+# # dependencies=[Depends(get_token_header)],
+# responses={404: {"description": "Not found"}},
+# )
+
+""" Make a request like this:  Example: http://127.0.0.1:5000/api/v1/craigslist?page=1&subject=beer+brewing+equipment """
 
 
-@router.get("/")
+@router.get("/api/v1/craigslist")
 async def get_name(page: int = 0, subject: str = ""):
     headers = {"User-Agent": "Mozilla/5.0"}
     full_product = []
@@ -51,6 +54,5 @@ async def get_name(page: int = 0, subject: str = ""):
                 link_=link_,
             )
         )
-    print(page)
     print(link)
-    return {"craigslist_result": [product for product in full_product]}
+    return {"results": [product for product in full_product]}

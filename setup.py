@@ -8,9 +8,6 @@ with open("README.md") as f:
     readme = f.read()
 
 production_requires = [
-    "lxml==4.6.3",
-    "psycopg2-binary==2.8.6",
-    "SQLAlchemy==1.4.15",
     "appdirs==1.4.4",
     "beautifulsoup4==4.9.3",
     "black==21.4b0",

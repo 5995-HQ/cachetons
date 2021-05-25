@@ -18,18 +18,10 @@ Install all the things.
 pip install -e .\[dev\]
 ```
 
-Build the DB:
-```
-python
-from db import init_db
-init_db()
-exit()
-```
-
 Run the code:
 ```
-uvicorn main:app --reload --post 5000
+uvicorn main:app --reload 
 ```
 
-Visit http://127.0.0.1:5000  to see the response. 
+Visit http://127.0.0.1:8000  to see the response. 
 
