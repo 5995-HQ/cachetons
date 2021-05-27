@@ -24,29 +24,31 @@ class Search extends Component {
             query: this.search.value
         }, () => {
             if (this.state.query && this.state.query.length > 1) {
-                if (this.state.query.length % 5 === 0) {
+                if (this.state.query.length % 2 === 0) {
                     this.getInfo()
                 }
-            } else if (!this.state.query) {
+            } else if (!this.state.query && this.state.query.length > 1) {
+
+
             }
         })
     }
 
     render() {
         return (
-            <div className="p-8">
-                <div className="bg-white flex items-center rounded-full shadow-xl">
+            <div>
+                <div>
                     <center>
-                        <form className="rounded-l-full w-full py-4 px-6 text-gray-700 leading-tight focus:outline-none">
+                        <form>
                             <input
-                                placeholder="Search for..."
-                                ref={input => this.search = input}
+                                placeholder="Search something... hit enter to clear results."
+                                ref={(input) => { this.search = input }}
+                                id="myInput"
+                                onkeyup="myFunction()"
+                                type="search"
                                 onChange={this.handleInputChange}
                             />
-                            <div className="p-4">
-                                <button className="bg-blue-500 text-white rounded-full p-2 hover:bg-blue-400 focus:outline-none w-12 h-12 flex items-center justify-center">
-                                    Search
-                                  </button>
+                            <div>
                             </div>
                             <Results results={this.state.results} />
                         </form>
