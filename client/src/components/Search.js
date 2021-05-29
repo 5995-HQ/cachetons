@@ -51,7 +51,6 @@ class Search extends Component {
                                 value={this.state.value}
                                 onChange={this.handleInputChange}
                             />
-                            <button type="submit"> Search </button>
                             <div>
                             </div>
                             <Results results={this.state.results} />

@@ -7,13 +7,18 @@ const Results = (props) => {
             <form>
                 <a href={r.link_}>
                     <img src={r.image} />
-                    {r.title}
-                    <p></p>
-                    {r.price}
-                    <p></p>
+                    <br>
+                    </br>
+                    <div className="link_text">
+                        {r.title}
+                        <p></p>
+                        {r.price}
+                        <p></p>
+                    </div>
+
                 </a>
             </form>
-        </div>
+        </div >
 
     ))
     return <div className="parent-wrapper">

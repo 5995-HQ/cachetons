@@ -3,6 +3,21 @@
   width:181px;
   
 } */
+
+.circular--landscape {
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.circular--landscape img .child {
+  width: auto;
+  height: 100%;
+  margin-left: -50px;
+}
 .parent {
   display: flex;
   font-size: 3;
@@ -11,10 +26,18 @@
 }
 .child {
   display: inline-block;
-  margin:300px 0 0 10px;
-  flex-grow: 4;
+  margin:50px 0 0 10px;
+  flex-grow: 5;
   height:100px;    
-  width: calc(100% * (1/4) - 10px - 1px)
+  width: calc(100% * (1/4) - 10px - 1px);
+}
+.link_text {
+  border: 2px solid rgb(148, 148, 148); /* Add a grey border */
+  border-radius: 20%;
+  font-size: 12px; /* Increase font-size */
+  padding: 20px 5px 5px 10px; /* Add some padding */
+  margin-bottom: 12px; /* Add some space below the input */
+  font-family: sans-serif;
 }
 
 #myInput {
