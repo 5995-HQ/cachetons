@@ -6,7 +6,7 @@ const Results = (props) => {
         <div className="child">
             <form>
                 <a href={r.link_}>
-                    <img src={r.image} />
+                    <img className="circular--square" src={r.image} />
                     <br>
                     </br>
                     <div className="link_text">

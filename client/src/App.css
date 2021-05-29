@@ -4,6 +4,18 @@
   
 } */
 
+.circular--square {
+  border-radius: 8%;
+}
+
+.circular--square {
+  border-top-left-radius: 8% 8%;
+  border-top-right-radius: 8% 8%;
+  border-bottom-right-radius: 8% 8%;
+  border-bottom-left-radius: 8% 8%;
+}
+
+
 .circular--landscape {
   display: inline-block;
   position: relative;
@@ -31,6 +43,11 @@
   height:100px;    
   width: calc(100% * (1/4) - 10px - 1px);
 }
+
+.child:hover {
+  border-color: coral;
+}
+
 .link_text {
   border: 2px solid rgb(148, 148, 148); /* Add a grey border */
   border-radius: 20%;
@@ -38,6 +55,18 @@
   padding: 20px 5px 5px 10px; /* Add some padding */
   margin-bottom: 12px; /* Add some space below the input */
   font-family: sans-serif;
+}
+
+.link_text:hover{
+  border-color: coral;
+}
+
+a:hover {
+  color: hotpink;
+}
+
+img:hover{
+  border-color: coral;
 }
 
 #myInput {
