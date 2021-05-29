@@ -4,7 +4,9 @@ import Results from './Cards'
 
 const API_URL = 'http://localhost:5000/api/v1/craigslist?page=1&subject='
 
+
 class Search extends Component {
+
     state = {
         query: '',
         results: []
@@ -28,7 +30,7 @@ class Search extends Component {
                     this.getInfo()
                 }
             } else if (!this.state.query && this.state.query.length > 1) {
-
+                this.getInfo()
 
             }
         })
@@ -41,13 +43,15 @@ class Search extends Component {
                     <center>
                         <form>
                             <input
-                                placeholder="Search something... hit enter to clear results."
+                                placeholder="Search something..."
                                 ref={(input) => { this.search = input }}
                                 id="myInput"
-                                onkeyup="myFunction()"
+                                onKeyDown="myFunction()"
                                 type="search"
+                                value={this.state.value}
                                 onChange={this.handleInputChange}
                             />
+                            <button type="submit"> Search </button>
                             <div>
                             </div>
                             <Results results={this.state.results} />
