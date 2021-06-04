@@ -9,6 +9,7 @@ with open("README.md") as f:
 
 production_requires = [
     "appdirs==1.4.4",
+    "lxml==4.6.3",
     "beautifulsoup4==4.9.3",
     "black==21.4b0",
     "bs4==0.0.1",
