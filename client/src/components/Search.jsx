@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Results from './Cards'
 
-const API_URL = 'http://localhost:5000/api/v1/craigslist?page=1&subject='
+const API_URL = 'http://localhost:5000/api/v1/ebay?subject='
 
 
 class Search extends Component {
@@ -37,26 +37,26 @@ class Search extends Component {
     }
 
     render() {
-        return (
+        return ( < div >
             <div>
-                <div>
-                    <center>
-                        <form>
-                            <input
-                                placeholder="Search something..."
-                                ref={(input) => { this.search = input }}
-                                id="myInput"
-                                onKeyDown="myFunction()"
-                                type="search"
-                                value={this.state.value}
-                                onChange={this.handleInputChange}
-                            />
-                            <div>
-                            </div>
-                            <Results results={this.state.results} />
-                        </form>
-                    </center>
-                </div>
+            <center>
+            <form>
+            <input placeholder = "Search something..."
+            ref = {
+                (input) => { this.search = input }
+            }
+            id = "myInput"
+            onKeyDown = "myFunction()"
+            type = "search"
+            value = { this.state.value }
+            onChange = { this.handleInputChange }
+            /> 
+            <div >
+            </div> 
+            <Results results = { this.state.results }/> 
+            </form> 
+            </center> 
+            </div> 
             </div>
 
         )

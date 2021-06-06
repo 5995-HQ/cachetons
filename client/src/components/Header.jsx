@@ -24,21 +24,24 @@ const useStyles = makeStyles((theme) => ({
 export default function ButtonAppBar() {
     const classes = useStyles();
 
-    return (
-        <div className={classes.root}>
-            <AppBar position="static">
-                <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="black" aria-label="menu">
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="l7" className={classes.title}>
-                        cathetons
-          </Typography>
-                    <Button color="inherit">Login</Button>
-                    <Button color="inherit">About</Button>
-                    <Button color="inherit">This is a button</Button>
-                </Toolbar>
-            </AppBar>
+    return ( <div className = { classes.root }>
+        <AppBar position = "static" >
+        <Toolbar >
+        <IconButton edge = "start"
+        className = { classes.menuButton }
+        color = "black"
+        label = "menu">
+        <MenuIcon / >
+        </IconButton> 
+        <Typography variant = "l7"
+        className = { classes.title } >
+        cathetons </Typography> 
+        <Button color = "inherit" > Login < /Button>
+        <Button color = "inherit" > About < /Button> 
+        <Button color = "inherit" > This is a button 
+        </Button> 
+        </Toolbar> 
+        </AppBar> 
         </div>
     );
 }

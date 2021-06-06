@@ -29,8 +29,8 @@ async def get_name(page: int = 0, subject: str = ""):
     link = result_subject.replace(" ", "+")
 
     r = requests.get(link, headers=headers)
-    content_lxml = bs(r.content, "lxml")
-    content_soup = bs(r.content, "html.parser")
+    content_lxml = bs(r.text, "lxml")
+    content_soup = bs(r.text, "html.parser")
     #  TODO: Regex to find the sku for this site.
     craigslist_rows = content_soup.find_all("li", class_="result-row")
     list_assets = list(content_lxml.select(".result-image[data-ids]"))
@@ -40,8 +40,6 @@ async def get_name(page: int = 0, subject: str = ""):
     full_product = []
     for item, image in zip(craigslist_rows, list_of_images):
         price = item.a.text.strip()
-        time_meta = item.find("time", class_="result-date")
-        time = time_meta["datetime"]
         meta_title = item.find("a", class_="result-title hdrlnk")
         title = meta_title.text
         link_ = meta_title["href"]
@@ -49,7 +47,6 @@ async def get_name(page: int = 0, subject: str = ""):
             dict(
                 image=image,
                 price=price,
-                time=time,
                 title=title,
                 link_=link_,
             )

@@ -57,7 +57,7 @@ async def get_name(subject: str = ""):
         if row_subject.find("span", class_="s-item__price") is not None:
             price = [row_subject.find("span", class_="s-item__price").text]
         else:
-            price = " "
+            price = "Click link to view price"
 
         link_ = row_subject.find("a")["href"]
         full_product.append(
