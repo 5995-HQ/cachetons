@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Results from './Cards'
+import "../App.css"
 
 const API_URL = 'http://localhost:5000/api/v1/ebay?subject='
 
@@ -40,7 +41,7 @@ class Search extends Component {
         return ( < div >
             <div>
             <center>
-            <form>
+            <form className="form">
             <input placeholder = "Search something..."
             ref = {
                 (input) => { this.search = input }

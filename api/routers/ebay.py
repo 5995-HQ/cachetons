@@ -25,8 +25,8 @@ async def get_name(subject: str = ""):
     link = result_subject.replace(" ", "+")
 
     r = requests.get(link, headers=headers, stream=True)
-    content_lxml = bs(r.content, "lxml")
-    content_soup = bs(r.content, "html.parser")
+    content_lxml = bs(r.text, "lxml")
+    content_soup = bs(r.text, "html.parser")
     #  TODO: Regex to find the sku for this site.
     ebay_rows = content_soup.find_all("li", class_="s-item")
     list_assets = list(content_lxml.select(".s-item__image-section"))

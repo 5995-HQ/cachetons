@@ -35,12 +35,11 @@ export default function ButtonAppBar() {
         </IconButton> 
         <Typography variant = "l7"
         className = { classes.title } >
-        cathetons </Typography> 
-        <Button color = "inherit" > Login < /Button>
-        <Button color = "inherit" > About < /Button> 
-        <Button color = "inherit" > This is a button 
-        </Button> 
-        </Toolbar> 
+        cathetons!!! </Typography> 
+            <Button color = "inherit" > Login </Button>
+            <Button color = "inherit" > About </Button> 
+            <Button color = "inherit"> This is a button </Button> 
+            </Toolbar> 
         </AppBar> 
         </div>
     );
