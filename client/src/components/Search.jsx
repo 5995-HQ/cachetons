@@ -3,7 +3,7 @@ import axios from 'axios'
 import Results from './Cards'
 import "../App.css"
 
-const API_URL = 'http://localhost:5000/api/v1/ebay?subject='
+const API_URL = 'http://localhost:500/api/v1/ebay?subject='
 
 
 class Search extends Component {
@@ -26,40 +26,40 @@ class Search extends Component {
         this.setState({
             query: this.search.value
         }, () => {
-            if (this.state.query && this.state.query.length > 1) {
-                if (this.state.query.length % 2 === 0) {
+            if (this.state.query && this.state.query.length >10) {
+                if (this.state.query.length % 40 === 0) {
                     this.getInfo()
+                    console.log("shit!")
                 }
             } else if (!this.state.query && this.state.query.length > 1) {
-                this.getInfo()
+                console.log("nothin")
 
             }
         })
     }
 
     render() {
-        return ( < div >
-            <div>
-            <center>
-            <form className="form">
-            <input placeholder = "Search something..."
-            ref = {
-                (input) => { this.search = input }
-            }
-            id = "myInput"
-            onKeyDown = "myFunction()"
-            type = "search"
-            value = { this.state.value }
-            onChange = { this.handleInputChange }
-            /> 
-            <div >
-            </div> 
-            <Results results = { this.state.results }/> 
-            </form> 
-            </center> 
-            </div> 
-            </div>
-
+        return ( 
+                    
+                     <div>
+                        <form>
+                        <center>
+                        <input placeholder = "           Search         "
+                            ref = {
+                                (input) => { this.search = input }}
+                            id = "myInput"
+                            type = "text"
+                            value = { this.state.value }
+                            // onChange = { this.handleInputChange }
+                            /> 
+                            </center>
+                        <button type="button" onClick={this.getInfo()}>        
+                            </button>
+                        <div >
+                     </div> 
+                    <Results results = { this.state.results }/> 
+                    </form> 
+                </div> 
         )
     }
 }

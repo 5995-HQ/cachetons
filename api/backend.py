@@ -11,9 +11,9 @@ app = FastAPI()
 app.register_blueprint(apiRoutes, url_prefix="/api")
 
 # TODO: Find a way to specify which city you want to search.
-@app.get("/cities/")
+@app.get("/v1")
 def read_item():
-    return {"city": ""}
+    return {"storefronts": ["Craigslist", "Ebay"]}
 
 
 """ You can specify a page number and a subject. Use '+' instead of space. 

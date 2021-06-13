@@ -5,7 +5,7 @@ const Results = (props) => {
     const options = props.results.map(r => (
         <div className="child">
             <form>
-                <a href={r.link_}>
+                <a href={r.link_} target="_blank" rel="noopener noreferrer">
                     <img className="circular--square" src={r.image} alt="" />
                     <br>
                     </br>
