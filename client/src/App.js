@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import SearchBar from './components/layout/SearchBar';
 import Logs from './components/logs/Logs';
 

@@ -1,13 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const LogItem = ({ log }) => {
-    return (
-        <li className="collection-item">
-            <div>
-                <a href="">{log.title}</a>
-            </div>
-        </li>
+const LogItem = ({ r }) => {
+    return (<div className="child">
+        <form>
+            <a href={r.link_} target="_blank" rel="noopener noreferrer">
+                <img className="circular-square" src={r.image} alt="" />
+                <div className="link_text">
+                    {r.title}
+                    <div className="price">{r.price}</div>
+                </div>
+            </a>
+        </form>
+    </div >
+
     )
 }
 

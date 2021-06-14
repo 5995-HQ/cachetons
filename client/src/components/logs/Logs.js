@@ -22,13 +22,13 @@ const Logs = () => {
         return <h3>loading...</h3>
     }
     return (
-        <ul className="collection-with-header">
+        <ul className="collection with-header">
             <li className="collection-header">
                 <h4 className="center">Cachetons!</h4>
             </li>
             {!loading && logs.length === 0 ? (<p>No logs to show.</p>
             ) : (
-                logs.results.map(log => <LogItem />)
+                logs.results.map(r => <LogItem r={r} key={r.title} />)
             )}
         </ul>
     );
