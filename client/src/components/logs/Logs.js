@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import LogItem from './LogItem';
+import Preloader from '../layout/Preloader';
 
 const Logs = () => {
     const [logs, setLogs] = useState([]);
@@ -11,7 +12,7 @@ const Logs = () => {
 
     const getLogs = async () => {
         setLoading(true);
-        const res = await fetch('/api/v1/craigslist?page=1&subject=beer+brewing+equipment');
+        const res = await fetch('/api/v1/craigslist?subject=beer+brewing');
         const data = await res.json();
 
         setLogs(data);
@@ -19,12 +20,12 @@ const Logs = () => {
     }
 
     if (loading) {
-        return <h3>loading...</h3>
+        return <Preloader />;
     }
     return (
         <ul className="collection with-header">
             <li className="collection-header">
-                <h4 className="center">Cachetons!</h4>
+                <h4 className="center">Cachetonsss!</h4>
             </li>
             {!loading && logs.length === 0 ? (<p>No logs to show.</p>
             ) : (
