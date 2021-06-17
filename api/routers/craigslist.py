@@ -1,4 +1,5 @@
 import requests
+import re
 
 from bs4 import BeautifulSoup as bs
 from fastapi import APIRouter, HTTPException  #  Depends,
@@ -42,12 +43,18 @@ async def get_name(page: int = 0, subject: str = ""):
         price = item.a.text.strip()
         meta_title = item.find("a", class_="result-title hdrlnk")
         title = meta_title.text
+        clean_title_string = re.sub("\W+", " ", title)
+        if len(clean_title_string) > 25:
+            clean_title_string = clean_title_string.replace(clean_title_string[20:], "...").title().strip()
+            print(clean_title_string)
         link_ = meta_title["href"]
+        if price == "":
+            price = "Click for price"
         full_product.append(
             dict(
                 image=image,
                 price=price,
-                title=title,
+                title=clean_title_string,
                 link_=link_,
             )
         )

@@ -5,7 +5,7 @@ const LogItem = ({ r }) => {
     return (<div className="child">
         <form>
             <a href={r.link_} target="_blank" rel="noopener noreferrer">
-                <img className="circular-square" src={r.image} alt="" />
+                <div align="center"> <img className="circular-square" src={r.image} alt="" /> </div>
                 <div className="link_text">
                     {r.title}
                     <div className="price">{r.price}</div>
