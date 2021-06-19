@@ -20,8 +20,8 @@ pip install -e .\[dev\]
 
 Run the code:
 ```
-uvicorn main:app --reload 
+uvicorn main:app --reload --port 5000
 ```
 
-Visit http://127.0.0.1:8000  to see the response. 
+Visit http://127.0.0.1:5000/  to see the response. 
 

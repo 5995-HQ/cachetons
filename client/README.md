@@ -15,3 +15,7 @@ navigate to http://localhost:3000
 - http://offerup.com
 - Etsy
 - some other shits
+- Price sorting
+- Price tracking?
+- Caching layer? 
+- Store results in a database and keep the images as a base64 entry? 
