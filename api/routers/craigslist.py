@@ -46,7 +46,6 @@ async def get_name(page: int = 0, subject: str = ""):
         clean_title_string = re.sub("\W+", " ", title)
         if len(clean_title_string) > 25:
             clean_title_string = clean_title_string.replace(clean_title_string[20:], "...").title().strip()
-            print(clean_title_string)
         link_ = meta_title["href"]
         if price == "":
             price = "Click for price"

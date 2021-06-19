@@ -12,7 +12,7 @@ const Logs = () => {
 
     const getLogs = async () => {
         setLoading(true);
-        const res = await fetch('/api/v1/craigslist?subject=beer+brewing');
+        const res = await fetch('/api/v1/ebay?subject=beer+brewing');
         const data = await res.json();
 
         setLogs(data);
@@ -25,7 +25,7 @@ const Logs = () => {
     return (
         <ul className="collection with-header">
             <li className="collection-header">
-                <h4 className="center">Cachetonsss!</h4>
+                <h4 className="center">cachetones</h4>
             </li>
             {!loading && logs.length === 0 ? (<p>No logs to show.</p>
             ) : (

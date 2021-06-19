@@ -10,3 +10,8 @@ wait for all the packages to install.
 
 navigate to http://localhost:3000
 
+
+# Sites to consider in the future:
+- http://offerup.com
+- Etsy
+- some other shits
