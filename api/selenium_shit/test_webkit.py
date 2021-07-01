@@ -15,7 +15,7 @@ username.send_keys("odnanref")
 password = driver.find_element_by_xpath(
     "/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div/div[2]/div/label/input"
 )
-password.send_keys("zQo QGXb1C Oyt4flQ 0n!6*n")
+
 password.send_keys(Keys.TAB)
 password.send_keys(Keys.RETURN)
 sleep(4)
