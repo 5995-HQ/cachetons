@@ -3,7 +3,7 @@ from fastapi import Depends, FastAPI
 # from api.dependencies import get_query_token, get_token_header
 
 # from .internal import admin
-from api.routers import craigslist, ebay, home
+from api.routers import craigslist, ebay, home, etsy
 from fastapi.middleware.cors import CORSMiddleware
 
 # app = FastAPI(dependencies=[Depends(get_query_token)])
@@ -25,6 +25,7 @@ app.add_middleware(
 app.include_router(craigslist.router)
 app.include_router(ebay.router)
 app.include_router(home.router)
+app.include_router(etsy.router)
 # app.include_router(
 #     admin.router,
 #     prefix="/admin",

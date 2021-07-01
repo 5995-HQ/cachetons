@@ -12,7 +12,7 @@ const Logs = () => {
 
     const getLogs = async () => {
         setLoading(true);
-        const res = await fetch('/api/v1/ebay?subject=beer+brewing');
+        const res = await fetch('/api/v1/etsy?subject=beer+brewing');
         const data = await res.json();
 
         setLogs(data);
