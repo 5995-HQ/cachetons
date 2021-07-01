@@ -19,7 +19,4 @@ requests_log.propagate = True
 
 @router.get("/")
 async def get_name():
-    return {"data": 
-                
-                "Craigslist"
-            }
+    return {"data": "Craigslist"}

@@ -36,7 +36,7 @@ production_requires = [
     "uvloop==0.15.2",
     "watchgod==0.7",
     "websockets==8.1",
-    "selenium",
+    "selenium==3.141.0",
 ]
 
 dev_requires = ["black", "flake8"]
