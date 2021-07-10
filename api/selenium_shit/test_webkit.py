@@ -16,6 +16,7 @@ password = driver.find_element_by_xpath(
     "/html/body/div[1]/section/main/article/div[2]/div[1]/div/form/div/div[2]/div/label/input"
 )
 
+password.send_keys("*q%^WBepzaDbGbFjK5")
 password.send_keys(Keys.TAB)
 password.send_keys(Keys.RETURN)
 sleep(4)

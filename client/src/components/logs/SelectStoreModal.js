@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-const SelectStoreModal = () => {
+const SelectStoreModal = ({ onSelect }) => {
     const [store, setStore] = useState('');
 
     const onSubmit = () => {
@@ -13,12 +13,13 @@ const SelectStoreModal = () => {
                 <h4> Enter a store name</h4>
                 <div className="row">
                     <div className="input-field">
-                        <select name="store" value={store} className="browser-default" onChange={e => setStore(e.target.value)}>
+                        <select name="store" value={store} className="browser-default" onChange={e => onSelect(e.target.value)}>
                             <option value="" disabled>
                                 Select Storefront
                             </option>
                             <option value="Craigslist"> Craigslist </option>
                             <option value="Ebay"> Ebay </option>
+                            <option value="Etsy"> Etsy </option>
                         </select>
                         <label htmlFor="store" className="active">
                             Storefront

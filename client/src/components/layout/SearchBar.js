@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-const SearchBar = () => {
+const SearchBar = ({ onSearch }) => {
+  const [search, setSearch] = useState()
+  function handleSubmit() { onSearch(search) }
   return (
-    <nav style={{ marginBottom: '30px' }} className="black">
+    < nav style={{ marginBottom: '30px' }
+    } className="black" >
       <div className="nav-wrapper">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="input-field">
-            <input id="search" type="search" />
+            <input id="search" type="search" value={search} onChange={r => setSearch(r.target.value)} />
             <label className="label-icon" htmlFor="search">
               <i className="material-icons">search</i>
             </label>
@@ -14,7 +17,7 @@ const SearchBar = () => {
           </div>
         </form>
       </div>
-    </nav>
+    </nav >
   )
 }
 

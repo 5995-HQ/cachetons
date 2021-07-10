@@ -1,10 +1,8 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import SearchBar from './components/layout/SearchBar';
 import Logs from './components/logs/Logs';
 import AddBtn from './components/layout/AddBtn';
 import SelectStoreModal from './components/logs/SelectStoreModal';
-import { Provider } from 'react-redux';
-import stores from './stores';
 
 
 import 'materialize-css/dist/css/materialize.min.css';
@@ -13,21 +11,22 @@ import './App.css'
 
 
 const App = () => {
+
+  const [storefront, setStorefront] = useState("craigslist")
+  const [subject, setSubject] = useState()
   useEffect(() => {
     // Here's where we initialize materialize css
     M.AutoInit();
   });
   return (
-    <Provider store={stores}>
-      <Fragment>
-        <SearchBar />
-        <div className="container">
-          <AddBtn />
-          <SelectStoreModal />
-          <Logs />
-        </div>
-      </Fragment>
-    </Provider>
+    <Fragment>
+      <SearchBar onSearch={(newSubject) => setSubject(newSubject)} />
+      <div className="container">
+        <AddBtn />
+        <SelectStoreModal onSelect={(newStoreSelect) => setStorefront(newStoreSelect)} />
+        <Logs storefront={storefront} subject={subject} />
+      </div>
+    </Fragment>
   );
 };
 

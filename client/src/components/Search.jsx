@@ -3,7 +3,7 @@ import axios from 'axios'
 import Results from './Cards'
 import "../App.css"
 
-const API_URL = 'http://localhost:500/api/v1/etsy?subject=beer+brewing'
+const API_URL = `${API_URL}`
 
 
 class Search extends Component {
@@ -50,7 +50,7 @@ class Search extends Component {
                             id="myInput"
                             type="text"
                             value={this.state.value}
-                        // onChange = { this.handleInputChange }
+                            onChange={this.handleInputChange}
                         />
                     </center>
                     <button type="button" onClick={this.getInfo()}>
