@@ -1,3 +1,8 @@
+## 2021-07-11
+- Added Etsy
+- Scrape with Selenium
+- Clean up frontend
+
 ## 2021-06-05
 - Add ability to scrape EBAY!
 - Rename components to .jsx files. 

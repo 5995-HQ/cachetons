@@ -5,7 +5,7 @@ const SearchBar = ({ onSearch }) => {
   function handleSubmit() { onSearch(search) }
   return (
     < nav style={{ marginBottom: '30px' }
-    } className="black" >
+    } className="green" >
       <div className="nav-wrapper">
         <form onSubmit={handleSubmit}>
           <div className="input-field">

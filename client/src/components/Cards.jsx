@@ -10,9 +10,9 @@ const Results = (props) => {
                     <br>
                     </br>
                     <div className="link_text">
-                        {r.title}
+                        {r.title.id}
                         <p></p>
-                        {r.price}
+                        {r.price.id}
                         <p></p>
                     </div>
 

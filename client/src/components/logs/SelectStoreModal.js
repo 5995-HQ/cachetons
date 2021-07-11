@@ -10,7 +10,7 @@ const SelectStoreModal = ({ onSelect }) => {
     return (
         <div id='add-log-modal' className="modal" style={modalStyle}>
             <div className="modal-content">
-                <h4> Enter a store name</h4>
+                <h4> Pick a storefront</h4>
                 <div className="row">
                     <div className="input-field">
                         <select name="store" value={store} className="browser-default" onChange={e => onSelect(e.target.value)}>

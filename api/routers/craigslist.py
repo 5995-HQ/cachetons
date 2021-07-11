@@ -36,8 +36,8 @@ async def get_name(page: int = 0, subject: str = ""):
     craigslist_rows = content_soup.find_all("li", class_="result-row")
     list_assets = list(content_lxml.select(".result-image[data-ids]"))
     ids = [item["data-ids"].replace("1:", "").replace("3:", "").split(",")[0] for item in list_assets]
-
     list_of_images = [image_url.format(j) for i in ids for j in i.split(",")]
+    print(len(ids), len(list_of_images))
     full_product = []
     for item, image in zip(craigslist_rows, list_of_images):
         price = item.a.text.strip()
