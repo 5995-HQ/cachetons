@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import SearchBar from './components/layout/SearchBar';
 import Logs from './components/logs/Logs';
-import AddBtn from './components/layout/AddBtn';
 import SelectStoreModal from './components/logs/SelectStoreModal';
 import Header from './components/Header';
 
@@ -19,17 +18,16 @@ const App = () => {
     M.AutoInit();
   });
   return (
-    <div className="container">
-      <Fragment>
-        <Header storefront={storefront} subject={subject} />
-        <SearchBar onSearch={(newSubject) => setSubject(newSubject)} />
-        <div>
+    <div className="display: flex; justify-content: flex-end">
+      <div className="row">
+        <Fragment>
+          <Header storefront={storefront} subject={subject} />
+          <SearchBar storefront={storefront} subject={subject} onSearch={(newSubject) => setSubject(newSubject)} />
           <SelectStoreModal onSelect={(newStoreSelect) => setStorefront(newStoreSelect)} />
           <Logs storefront={storefront} subject={subject} />
-          <AddBtn />
-        </div>
-      </Fragment>
-    </div>
+        </Fragment>
+      </div >
+    </div >
   );
 };
 

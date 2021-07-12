@@ -6,14 +6,13 @@ function capitalizeFirstLetter(string) {
 }
 
 const Header = ({ subject, storefront }) => {
-    const [loading, setLoading] = useState(false);
 
 
     return (
         <div className="row">
-            <h4 className="col s4" t><u>Cachetones</u></h4>
-            <h4 className="col s3 center">{subject.length === 0 ? ("") : ("'" + subject + "'")}</h4>
-            <h4 className="col s5 right-align">{capitalizeFirstLetter(storefront)}</h4>
+            <h4 className="col s6" t><u>Cachetones</u></h4>
+            <h4 className="col s3">{subject.length === 0 ? ("") : ("'" + subject + "'")}</h4>
+            <h4 className="col s3 right-align">{capitalizeFirstLetter(storefront)}</h4>
         </div>
     );
 }
