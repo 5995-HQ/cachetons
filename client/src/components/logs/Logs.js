@@ -9,7 +9,7 @@ const Logs = ({ storefront, subject }) => {
 
     useEffect(() => {
         getLogs();
-    }, [storefront, subject]);
+    }, []);
 
     const getLogs = async () => {
         setLoading(true);

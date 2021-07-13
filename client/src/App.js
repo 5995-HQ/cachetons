@@ -13,6 +13,7 @@ const App = () => {
 
   const [storefront, setStorefront] = useState("craigslist")
   const [subject, setSubject] = useState("")
+  const [option, setOption] = useState("")
   useEffect(() => {
     // Here's where we initialize materialize css
     M.AutoInit();
@@ -21,9 +22,9 @@ const App = () => {
     <div className="display: flex; justify-content: flex-end">
       <div className="row">
         <Fragment>
-          <Header storefront={storefront} subject={subject} />
-          <SearchBar storefront={storefront} subject={subject} onSearch={(newSubject) => setSubject(newSubject)} />
-          <SelectStoreModal onSelect={(newStoreSelect) => setStorefront(newStoreSelect)} />
+          <Header storefront={storefront} subject={subject} onSearch={(newSubject) => setSubject(newSubject)} />
+          <SearchBar onSearch={(newSubject) => setSubject(newSubject)} />
+          <SelectStoreModal onOption={(newOption) => setOption(newOption)} onSelect={(newStoreSelect) => setStorefront(newStoreSelect)} />
           <Logs storefront={storefront} subject={subject} />
         </Fragment>
       </div >
