@@ -1,24 +1,16 @@
 import React, { useState } from 'react';
-
-const SearchBar = ({ onSearch }) => {
+import '../../App.css'
+const SearchBar = ({ onSelect, onSearch }) => {
+  const [store, setStore] = useState()
   const [search, setSearch] = useState()
-  function handleSubmit() { onSearch(search) }
+  function handleSubmit() { (onSelect(store), onSearch(search)) }
   return (
-    <div className="container">
-      < nav style={{ marginBottom: '30px' }
-      } className="white" >
-        <div className="nav-wrapper">
-          <form onSubmit={handleSubmit}>
-            <div className="input-field">
-              <input id="search" type="search" value={search} onChange={r => setSearch(r.target.value)} />
-              <label className="label-icon" htmlFor="search">
-                <i className="material-icons">search</i>
-              </label>
-              <i className="material-icons">close</i>
-            </div>
-          </form>
+    <div>
+      <form onSubmit={handleSubmit} >
+        <div className="search_bar">
+          <input id="search" type="search" value={(store, search)} onChange={r => setStore(r.target.value), r => setSearch(r.target.value)} />
         </div>
-      </nav >
+      </form>
     </div>
   )
 }

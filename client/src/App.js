@@ -3,7 +3,8 @@ import SearchBar from './components/layout/SearchBar';
 import Logs from './components/logs/Logs';
 import SelectStoreModal from './components/logs/SelectStoreModal';
 import Header from './components/Header';
-
+import SideNav from './components/layout/SideNav';
+import { SideBarFancy } from './components/layout/SideBarFancy';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import './App.css'
@@ -11,7 +12,7 @@ import './App.css'
 
 const App = () => {
 
-  const [storefront, setStorefront] = useState("craigslist")
+  const [store, setStorefront] = useState("Ebay")
   const [subject, setSubject] = useState("")
   const [option, setOption] = useState("")
   useEffect(() => {
@@ -19,16 +20,15 @@ const App = () => {
     M.AutoInit();
   });
   return (
-    <div className="display: flex; justify-content: flex-end">
-      <div className="row">
-        <Fragment>
-          <Header storefront={storefront} subject={subject} onSearch={(newSubject) => setSubject(newSubject)} />
-          <SearchBar onSearch={(newSubject) => setSubject(newSubject)} />
-          <SelectStoreModal onOption={(newOption) => setOption(newOption)} onSelect={(newStoreSelect) => setStorefront(newStoreSelect)} />
-          <Logs storefront={storefront} subject={subject} />
-        </Fragment>
-      </div >
+
+    <div className="container">
+      < Header />
+      <SelectStoreModal />
+      <SearchBar store={store} onSelect={(newStoreSelect) => setStorefront(newStoreSelect)} onSearch={(newSubject) => setSubject(newSubject)} />
+      < SideNav />
+      <Logs store={store} subject={subject} />
     </div >
+
   );
 };
 
