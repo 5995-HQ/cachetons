@@ -1,46 +1,11 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import '../App.css'
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import React, { useState, useEffect } from 'react'
 
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 4,
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        flexGrow: 4,
-    },
-}));
-
-export default function ButtonAppBar() {
-    const classes = useStyles();
-
-    return (<div className={classes.root}>
-        <AppBar position="static" >
-            <Toolbar >
-                <IconButton edge="start"
-                    className={classes.menuButton}
-                    color="black"
-                    label="menu">
-                    <MenuIcon />
-                </IconButton>
-                <Typography variant="l7"
-                    className={classes.title} >
-                    cathetons!!! </Typography>
-                <Button color="inherit" > Login </Button>
-                <Button color="inherit" > About </Button>
-                <Button color="inherit"> This is a button </Button>
-            </Toolbar>
-        </AppBar>
-    </div>
+const Header = ({ }) => {
+    return (
+        <div className="pb-5 sm:flex sm:items-center sm:justify-between">
+            <h3 className="text-lg leading-6 font-medium text-gray-900">Cachetons</h3>
+        </div>
     );
 }
+export default Header;

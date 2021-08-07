@@ -54,8 +54,6 @@ async def get_name(subject: str = ""):
     for item, image, row_subject in zip(list_of_titles, list_of_images, ebay_rows):
         title = item.title()
         clean_title_string = re.sub("\W+", " ", title)
-        if len(clean_title_string) > 25:
-            clean_title_string = clean_title_string.replace(clean_title_string[20:], "...").title().strip()
         image = image
 
         if row_subject.find("span", class_="s-item__price") is not None:

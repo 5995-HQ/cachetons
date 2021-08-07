@@ -1,32 +1,30 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchBar from './components/layout/SearchBar';
-import Logs from './components/logs/Logs';
-import AddBtn from './components/layout/AddBtn';
-import SelectStoreModal from './components/logs/SelectStoreModal';
+import Logs from './components/stores/Logs';
+import SelectStore from './components/stores/SelectStore';
+import Header from './components/Header';
 
-
-import 'materialize-css/dist/css/materialize.min.css';
-import M from 'materialize-css/dist/js/materialize.min.js';
 import './App.css'
-
 
 const App = () => {
 
   const [storefront, setStorefront] = useState("craigslist")
   const [subject, setSubject] = useState()
-  useEffect(() => {
-    // Here's where we initialize materialize css
-    M.AutoInit();
-  });
+
   return (
-    <Fragment>
-      <SearchBar onSearch={(newSubject) => setSubject(newSubject)} />
-      <div className="container">
-        <AddBtn />
-        <SelectStoreModal onSelect={(newStoreSelect) => setStorefront(newStoreSelect)} />
-        <Logs storefront={storefront} subject={subject} />
+    <div>
+      <div className="header">
+        <Header />
       </div>
-    </Fragment>
+      <div className="px-10 pt-10 pb-20 relative flex items-center space-x-5">
+        <SearchBar onSearch={(newSubject) => setSubject(newSubject)} />
+
+        <SelectStore onSelect={(newStoreSelect) => setStorefront(newStoreSelect)} />
+        <div>
+        </div>
+      </div>
+      <Logs storefront={storefront} subject={subject} />
+    </div >
   );
 };
 
