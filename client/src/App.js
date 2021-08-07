@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Logs from './components/stores/Logs';
-import SelectAndSearchStore from './components/stores/SelectStore';
+import SelectAndSearchStore from './components/stores/SelectAndSearchStore';
 import Header from './components/Header';
 
 import './App.css'

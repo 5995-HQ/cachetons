@@ -39,16 +39,19 @@ async def get_name(page: int = 0, subject: str = ""):
 
     list_of_images = [image_url.format(j) for i in ids for j in i.split(",")]
     full_product = []
+    index=0
     for item, image in zip(craigslist_rows, list_of_images):
         price = item.a.text.strip()
         meta_title = item.find("a", class_="result-title hdrlnk")
         title = meta_title.text
         clean_title_string = re.sub("\W+", " ", title)
         link_ = meta_title["href"]
+        index +=1
         if price == "":
             price = "Click for price"
         full_product.append(
             dict(
+                id=index,
                 image=image,
                 price=price,
                 title=clean_title_string,

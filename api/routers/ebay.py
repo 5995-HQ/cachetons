@@ -50,7 +50,7 @@ async def get_name(subject: str = ""):
                 pass
         except Exception as e:
             print(e)
-
+    index=0
     for item, image, row_subject in zip(list_of_titles, list_of_images, ebay_rows):
         title = item.title()
         clean_title_string = re.sub("\W+", " ", title)
@@ -60,10 +60,11 @@ async def get_name(subject: str = ""):
             price = [row_subject.find("span", class_="s-item__price").text]
         else:
             price = "Click link to view price"
-
+        index += 1
         link_ = row_subject.find("a")["href"]
         full_product.append(
             dict(
+                id=index,
                 image=image,
                 price=price,
                 title=clean_title_string,

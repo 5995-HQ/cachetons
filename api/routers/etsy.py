@@ -44,7 +44,7 @@ async def get_name(subject: str = ""):
     list_of_images = []
     list_of_titles = []
     list_of_links = []
-
+    index = 0
     for title in list_assets:
         for tit in title.find_all("h3", class_="wt-text-caption"):
             list_of_titles.append(tit.text)
@@ -67,8 +67,10 @@ async def get_name(subject: str = ""):
         image = image
         price = money
         link_ = link_
+        index +=1
         full_product.append(
             dict(
+                id=index,
                 image=image,
                 price=price,
                 title=clean_title_string,
