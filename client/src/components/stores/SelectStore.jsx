@@ -1,104 +1,42 @@
-import React, { Component, Fragment, useState } from 'react'
+import React, { Component, Fragment, useState, useEffect } from 'react'
 import { Menu, Transition } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/solid'
 
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
+
+const SelectAndSearchStore = ({ sendSearch }) => {
+    const [store, setStore] = useState('craigslist');
+    const [search, setSearch] = useState('');
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        sendSearch(store, search);
+    }
+
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                <div className="flex space-x-4">
+                    <div>
+                        <input id="search" type="search" onChange={r => setSearch(r.target.value)} className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full pr-12 sm:text-sm border-gray-300 rounded-md" />
+                    </div>
+                    <div>
+                        <select
+                            onChange={r => setStore(r.target.value)}
+                            id="store"
+                            name="store"
+                            className="block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                            defaultValue="Craigslist"
+                        >
+                            <option>Craigslist</option>
+                            <option>Etsy</option>
+                            <option>Ebay</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+    )
 }
 
 
-const SelectStoreModal = ({ onSelect }) => {
-    const [store, setStore] = useState('');
-    const onSubmit = () => {
-        console.log(store);
-    }
-    return (
-        <Menu as="div" className="relative inline-block text-left">
-            {({ open }) => (
-                <div className="inline-block">
-                    <div>
-                        <Menu.Button className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
-                            Select Store
-                            <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
-                        </Menu.Button>
-                    </div>
+export default SelectAndSearchStore;
 
-                    <Transition
-                        show={open}
-                        as={Fragment}
-                        enter="transition ease-out duration-100"
-                        enterFrom="transform opacity-0 scale-95"
-                        enterTo="transform opacity-100 scale-100"
-                        leave="transition ease-in duration-75"
-                        leaveFrom="transform opacity-100 scale-100"
-                        leaveTo="transform opacity-0 scale-95"
-                    >
-                        <Menu.Items
-                            static
-                            className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-                        >
-                            <div className="py-1">
-                                <Menu.Item>
-                                    {({ active }) => (
-                                        <a
-                                            href="#"
-                                            className={classNames(
-                                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                'block px-4 py-2 text-sm'
-                                            )}
-                                        >
-                                            Craigslist
-                                        </a>
-                                    )}
-                                </Menu.Item>
-                                <Menu.Item>
-                                    {({ active }) => (
-                                        <a
-                                            href="#"
-                                            className={classNames(
-                                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                'block px-4 py-2 text-sm'
-                                            )}
-                                        >
-                                            Ebay
-                                        </a>
-                                    )}
-                                </Menu.Item>
-                                <Menu.Item>
-                                    {({ active }) => (
-                                        <a
-                                            href="#"
-                                            className={classNames(
-                                                active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                'block px-4 py-2 text-sm'
-                                            )}
-                                        >
-                                            Etsy
-                                        </a>
-                                    )}
-                                </Menu.Item>
-                                <form method="POST" action="#">
-                                    <Menu.Item>
-                                        {({ active }) => (
-                                            <button
-                                                type="submit"
-                                                className={classNames(
-                                                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                    'block w-full text-left px-4 py-2 text-sm'
-                                                )}
-                                            >
-                                                Sign out
-                                            </button>
-                                        )}
-                                    </Menu.Item>
-                                </form>
-                            </div>
-                        </Menu.Items>
-                    </Transition>
-                </div>
-            )}
-        </Menu>
-    )
-};
-
-export default SelectStoreModal;
