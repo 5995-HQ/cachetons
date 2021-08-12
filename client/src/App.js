@@ -17,9 +17,8 @@ const App = () => {
 
   return (
     <div>
-      <div className="header">
-        <Header />
-      </div>
+     <Header className="header"/>
+      
       <div className="px-10 pt-10 pb-20 relative flex items-center space-x-5">
         <SelectAndSearchStore sendSearch={(store, search) => sendSearch(store, search)} />
         <div>
