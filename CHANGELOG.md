@@ -1,3 +1,6 @@
+## 2021-08-7
+- Add that tailwind chili, remove materialize
+
 ## 2021-06-05
 - Add ability to scrape EBAY!
 - Rename components to .jsx files. 

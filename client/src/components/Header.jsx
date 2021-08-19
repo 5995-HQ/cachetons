@@ -1,46 +1,16 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import '../App.css'
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import React, { useState, useEffect } from 'react'
 
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 4,
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        flexGrow: 4,
-    },
-}));
+const Header = ({ }) => {
+    return (
 
-export default function ButtonAppBar() {
-    const classes = useStyles();
+        <div className="grid">
+            <div className="flex items-stretch font-sans md:font-serif text-4xl mt-8 ml-96 self-auto">
+                <p>Cachetons</p>
+                <p className="pl-96 mt-2 font-sans md:font-serif text-2xl self-auto">Search through some of your favorite user to user marketplaces</p>
+            </div>
+        </div>
 
-    return (<div className={classes.root}>
-        <AppBar position="static" >
-            <Toolbar >
-                <IconButton edge="start"
-                    className={classes.menuButton}
-                    color="black"
-                    label="menu">
-                    <MenuIcon />
-                </IconButton>
-                <Typography variant="l7"
-                    className={classes.title} >
-                    cathetons!!! </Typography>
-                <Button color="inherit" > Login </Button>
-                <Button color="inherit" > About </Button>
-                <Button color="inherit"> This is a button </Button>
-            </Toolbar>
-        </AppBar>
-    </div>
     );
 }
+export default Header;

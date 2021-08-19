@@ -38,16 +38,13 @@ async def get_name(subject: str = ""):
     driver.get(link)
     time.sleep(1)
     page_source = driver.page_source
-    # r = requests.get(page_source, headers=headers, stream=True)
-    # content_lxml = bs(r.text, "lxml")
     content_soup = bs(page_source, "html.parser")
-    # monies = content_soup.find_all("ul", class_="wt-grid")
     list_assets = list(content_soup.find_all("ul", class_="wt-grid"))
     price_list = []
     list_of_images = []
     list_of_titles = []
     list_of_links = []
-
+    index = 0
     for title in list_assets:
         for tit in title.find_all("h3", class_="wt-text-caption"):
             list_of_titles.append(tit.text)
@@ -67,13 +64,13 @@ async def get_name(subject: str = ""):
     for item, image, money, link_ in zip(list_of_titles, list_of_images, price_list, list_of_links):
         title = item.title()
         clean_title_string = re.sub("\W+", " ", title)
-        if len(clean_title_string) > 25:
-            clean_title_string = clean_title_string.replace(clean_title_string[20:], "...").title().strip()
         image = image
         price = money
         link_ = link_
+        index +=1
         full_product.append(
             dict(
+                id=index,
                 image=image,
                 price=price,
                 title=clean_title_string,
