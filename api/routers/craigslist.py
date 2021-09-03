@@ -1,10 +1,21 @@
-import requests
+import api
 import re
+import requests
 
 from bs4 import BeautifulSoup as bs
+from dataclasses import dataclass, field
 from fastapi import APIRouter, HTTPException  #  Depends,
+from requests.api import get, post
 
+@dataclass
+class Item:
+    id: str
+    price: float
+    image: str
+    title: str
+    link_: str
 
+post_result = []
 def geo_loc():
     """
     :return: your geo location for the craigslist search
@@ -31,7 +42,6 @@ async def get_name(page: int = 0, subject: str = ""):
     content_soup = bs(r.text, "html.parser")
     #  TODO: Regex to find the sku for this site.
     craigslist_rows = content_soup.find_all("li", class_="result-row")
-    post_result = []
     index = 0
     for post in craigslist_rows:
         post_title = post.find(class_="result-title").text
@@ -51,6 +61,11 @@ async def get_name(page: int = 0, subject: str = ""):
         post_result.append(dict(id=+index, title=post_title, link_=post_url, price=post_price, image=image_url))
 
     return {"results": [product for product in post_result]}
+
+@router.get("/api/v1/craigslist/{id}")
+async def get_product(id: int):
+    id = [post_result[id][f"{id}"] if post_result[id]["id"] == id else 0000 for post_result in post_result]
+    return {"results": [id if id and not 0 else "No id found"]}
 
 
 
@@ -108,3 +123,4 @@ print(final_post)
 
 
 """
+
