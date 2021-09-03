@@ -1,5 +1,4 @@
-import React, { Component, Fragment, useState, useEffect, ImageBackground, StyleSheet, Text, View } from 'react'
-import { Menu, Transition } from '@headlessui/react'
+import React, { useState } from 'react'
 
 
 const SelectAndSearchStore = ({ sendSearch }) => {
@@ -24,8 +23,8 @@ const SelectAndSearchStore = ({ sendSearch }) => {
                                 onChange={r => setStore(r.target.value)}
                                 id="store"
                                 name="store"
-                                className="block w-full pl-3 pr-10 shadow-lg  py-2.5 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md mt-10"
-                                defaultValue="Craigslist"
+                                className="block w-full pl-3 pr-10 shadow-lg py-2.5 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md mt-10"
+                                defaultValue="Etsy"
                             >
                                 <option>Craigslist</option>
                                 <option>Etsy</option>
