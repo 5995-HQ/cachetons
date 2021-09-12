@@ -4,6 +4,7 @@ import Preloader from '../layout/Preloader';
 import '../../App.css'
 
 
+
 const Logs = ({ storefront, subject }) => {
     const [logs, setLogs] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -26,14 +27,16 @@ const Logs = ({ storefront, subject }) => {
     if (loading) {
         return <Preloader />;
     }
+    
     return (
-        <div className="pl-96" >
+        <div className="pl-96">
             <ul className="grid lg:grid-cols-5 xl:gap-x-8">
                 {!loading && logs.length === 0 ? (<p>No logs to show.</p>
                 ) : (
                     logs.results.map(r => <LogItem r={r} key={r.id} />)
                 )}
             </ul>
+            
         </div >
     );
 };
