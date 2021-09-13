@@ -51,10 +51,10 @@ img:hover {
 	width: 80%;
 	margin: 0 auto; /* Center the DIV horizontally */
 }
-.fixed-header, .header, .fixed-footer{
+.fixed-header, .fixed-footer{
 	width: 100%;
-	position: fixed;        
-	background: #333;
+	position: sticky;        
+	background: rgb(192, 244, 236);
 	padding: 10px 0;
 	color: #fff;
 }

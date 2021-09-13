@@ -18,7 +18,7 @@ class Item:
     link_: str
 
 post_result = []
-def geo_loc():
+def geo_loc_from_header():
     """
     :return: your geo location for the craigslist search
     """
@@ -28,17 +28,15 @@ def geo_loc():
     region_tag = response.headers["Set-Cookie"].split()[0].replace("cl_def_hp=","").replace(";","")
     return region_tag
 
-
 router = APIRouter()
 """ Make a request like this:  Example: http://127.0.0.1:5000/api/v1/craigslist?page=1&subject=beer+brewing+equipment """
-
 
 @router.get("/api/v1/craigslist")
 async def get_name(page: int = 1, subject: str = ""):
     global post_result
     headers = {"User-Agent": "Mozilla/5.0"}
     page = page * 120
-    result_subject = f"https://{geo_loc()}.craigslist.org/d/for-sale/search/sss?{page}&query={subject}"
+    result_subject = f"https://{geo_loc_from_header()}.craigslist.org/d/for-sale/search/sss?{page}&query={subject}"
     link = result_subject.replace(" ", "+")  # should use urljoin here. 
 
     r = requests.get(link, headers=headers)
