@@ -45,6 +45,7 @@ img:hover {
 
 .header {
   position: fixed;
+  top: 0;
 }
 
 .content {

@@ -1,6 +1,8 @@
 import React, { Component, Fragment, useState, useEffect, ImageBackground, StyleSheet, Text, View } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 
+import '../../App.css'
+
 
 const SelectAndSearchStore = ({ sendSearch }) => {
     const [store, setStore] = useState('craigslist');
@@ -12,7 +14,7 @@ const SelectAndSearchStore = ({ sendSearch }) => {
     }
 
     return (
-        <div>
+        <div className="header">
             <form onSubmit={handleSubmit}>
                 <div className="ml-96">
                     <div className="flex space-x-4">
