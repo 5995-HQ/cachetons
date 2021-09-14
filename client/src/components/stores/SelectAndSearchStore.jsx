@@ -16,17 +16,17 @@ const SelectAndSearchStore = ({ sendSearch }) => {
     return (
         <div className="header">
             <form onSubmit={handleSubmit}>
-                <div className="ml-96">
+                <div className="ml-96 mt-4">
                     <div className="flex space-x-4">
                         <div>
-                            <input id="search" placeholder="Search something..." type="search" onChange={r => setSearch(r.target.value)} className="shadow-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full mt-10 pr-12 sm:text-sm border-gray-300 rounded-md" />
+                            <input id="search" placeholder="Search something..." type="search" onChange={r => setSearch(r.target.value)} className="shadow-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-2.5 pr-12 sm:text-sm border-gray-300 rounded-md" />
                         </div>
                         <div>
                             <select
                                 onChange={r => setStore(r.target.value)}
                                 id="store"
                                 name="store"
-                                className="block w-full pl-3 pr-10 shadow-lg  py-2.5 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md mt-10"
+                                className="block w-full pl-3 pr-10 shadow-lg py-2.5 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                                 defaultValue="Craigslist"
                             >
                                 <option>Craigslist</option>

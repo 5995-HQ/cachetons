@@ -17,15 +17,15 @@ const App = () => {
 
   return (
     <div>
-     <Header className="header"/>
-      
+      <div>
+        <div className="font-sans md:font-serif toppart pr-10 text-2xl">Search through some of your favorite user to user marketplaces</div>
+        <div className="font-sans md:font-serif side mt-1 text-4xl">Cachetons</div>
+        </div >
       <div className="px-10 pt-10 pb-20 relative flex items-center space-x-5">
         <SelectAndSearchStore sendSearch={(store, search) => sendSearch(store, search)} />
-        <div>
-        </div>
       </div>
       <Logs storefront={storefront} subject={subject} />
-    </div >
+      </div>
   );
 };
 
