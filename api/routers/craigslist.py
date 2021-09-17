@@ -1,4 +1,5 @@
 import api
+from datetime import datetime
 import re
 import requests
 import time
@@ -6,6 +7,7 @@ import uuid
 
 
 from bs4 import BeautifulSoup as bs
+from collections import OrderedDict
 from dataclasses import dataclass, field
 from datetime import date
 from fastapi import APIRouter, HTTPException  #  Depends,
@@ -19,7 +21,7 @@ class Item:
     title: str
     link_: str
 
-
+post_result = []
 def geo_loc_from_header():
     """
     :return: your geo location for the craigslist search
@@ -35,7 +37,7 @@ router = APIRouter()
 
 @router.get("/api/v1/craigslist")
 async def get_name(page: int = 120, subject: str = ""):
-    post_result = []
+    global post_result
     page = 120
     headers = {"User-Agent": "Mozilla/5.0"}
     result_subject = f"https://{geo_loc_from_header()}.craigslist.org/d/for-sale/search/sss?{page}&query={subject}"
@@ -56,7 +58,11 @@ async def get_name(page: int = 120, subject: str = ""):
             post_price = "Click for price info" 
         
         if post.find(class_="result-date"):
-            post_date = post.find(class_="result-date").text
+            found_date = post.find(class_="result-date").text
+            frmt_time = datetime.strptime(found_date, "%b %d")
+            post_date = datetime.strftime(frmt_time, "%b %d")
+
+            
 
         if post.find(class_="result-image").get("data-ids"):
             post_image = post.find(class_="result-image").get("data-ids").split(",")[0].split(":")[1]
@@ -77,5 +83,12 @@ async def get_product(product_id):
     print(f"{product_id}")
     value = (list(filter(lambda x:x["id"]==f"{product_id}",post_result)))
     print(value)
-    return {"results": value if value else "No id found"}   
+    return {"results": value if value else "No id found"}
     
+
+@router.get("/api/v1/craigslist/results&sorted")
+async def sort_results():
+    global post_result
+    ordered = OrderedDict(sorted(post_result["results"].items()))
+    print(ordered)
+    return {"results": ordered if ordered else "No results found"}
