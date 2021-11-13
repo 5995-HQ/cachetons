@@ -5,8 +5,13 @@ import re
 import time
 
 from bs4 import BeautifulSoup as bs
+from .. import constants
+from collections import OrderedDict
+from dataclasses import dataclass, field
+from datetime import date
 from fastapi import APIRouter, HTTPException
 from selenium import webdriver
+from requests.api import get, post
 
 # http.client.HTTPConnection.debuglevel = 1
 
@@ -27,15 +32,11 @@ async def get_name(subject: str = ""):
     options.add_argument("--incognito")
     options.add_argument("--headless")
     driver = webdriver.Firefox(executable_path="/opt/geckodriver", firefox_options=options)
-    headers = {"User-Agent": "Mozilla/5.0"}
     full_product = []
     # subject = "Quilting things"
-    headers = {"User-Agent": "Mozilla/5.0"}
-    full_product = []
-    result_subject = f"https://www.etsy.com/search?q={subject}&order=most_relevant&view_type=gallery"
-    link = result_subject.replace(" ", "+")
-    print("Getting Driver")
-    driver.get(link)
+    result_subject = f"https://www.etsy.com/search?q={subject}&order=most_relevant&view_type=gallery".replace(" ", "+")
+    # link = result_subject
+    driver.get(result_subject)
     time.sleep(1)
     page_source = driver.page_source
     content_soup = bs(page_source, "html.parser")

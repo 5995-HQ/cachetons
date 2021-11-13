@@ -7,10 +7,11 @@ import uuid
 
 
 from bs4 import BeautifulSoup as bs
+from .. import constants
 from collections import OrderedDict
 from dataclasses import dataclass, field
 from datetime import date
-from fastapi import APIRouter, HTTPException  #  Depends,
+from fastapi import APIRouter, HTTPException
 from requests.api import get, post
 
 @dataclass
@@ -26,9 +27,8 @@ def geo_loc_from_header():
     """
     :return: your geo location for the craigslist search
     """
-    headers = {"User-Agent": "Mozilla/5.0"}
     url = 'https://www.craigslist.org'
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=constants.HEADERS)
     region_tag = response.headers["Set-Cookie"].split()[0].replace("cl_def_hp=","").replace(";","")
     return region_tag
 
@@ -39,11 +39,10 @@ router = APIRouter()
 async def get_name(page: int = 120, subject: str = ""):
     global post_result
     page = 120
-    headers = {"User-Agent": "Mozilla/5.0"}
     result_subject = f"https://{geo_loc_from_header()}.craigslist.org/d/for-sale/search/sss?{page}&query={subject}"
     link = result_subject.replace(" ", "+")  # should use urljoin here. 
 
-    r = requests.get(link, headers=headers)
+    r = requests.get(link, headers=constants.HEADERS)
     content_soup = bs(r.text, "html.parser")
     #  TODO: Regex to find the sku for this site.
     craigslist_rows = content_soup.find_all("li", class_="result-row")

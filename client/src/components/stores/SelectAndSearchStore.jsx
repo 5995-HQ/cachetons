@@ -19,7 +19,7 @@ const SelectAndSearchStore = ({ sendSearch }) => {
                 <div className="ml-96 mt-4">
                     <div className="flex space-x-4">
                         <div>
-                            <input id="search" placeholder="Search something..." type="search" onChange={r => setSearch(r.target.value)} className="shadow-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-2.5 pr-12 sm:text-sm border-gray-300 rounded-md" />
+                            <input id="search" placeholder="Search something..." type="search" onInput={r => setSearch(r.target.value)} className="shadow-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-2.5 pr-12 sm:text-sm border-gray-300 rounded-md" />
                         </div>
                         <div>
                             <select

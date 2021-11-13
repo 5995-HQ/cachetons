@@ -29,7 +29,7 @@ const Logs = ({ storefront, subject }) => {
     return (
         <div className="pl-96" >
             <ul role="list" className="grid grid-cols-10 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-                {!loading && logs.length === 0 ? (<p>No logs to show.</p>
+                {!loading && logs.length === 0 ? (<center><h1>No logs to show.</h1></center>
                 ) : (
                     logs.results.map(r => <LogItem r={r} key={r.id} />)
                 )}

@@ -7,8 +7,8 @@ import './App.css'
 
 const App = () => {
 
-  const [storefront, setStorefront] = useState("craigslist")
-  const [subject, setSubject] = useState()
+  const [storefront, setStorefront] = useState("ebay")
+  const [subject, setSubject] = useState("")
 
   const sendSearch = (store, search) => {
     setStorefront(store)
