@@ -70,9 +70,17 @@ async def get_name(page: int = 120, subject: str = ""):
             image_url = "0000" # Tell the api to use a default image.
         
     
-        post_result.append(dict(id=(uuid.uuid4().hex), title=post_title, link_=post_url, price=post_price, image=image_url, date=post_date))
+        post_result.append(
+            dict(
+                id=(uuid.uuid4().hex), 
+                title=post_title,
+                link_=post_url,
+                price=post_price, 
+                image=image_url,
+                date=post_date)
+                )
 
-    return {"results": tuple([product for product in post_result]) if post_result else "No results found"}
+    return {"results": tuple([product for product in post_result])}
         
 
 @router.get("/api/v1/craigslist/{product_id}")
