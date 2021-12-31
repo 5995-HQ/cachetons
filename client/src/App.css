@@ -40,7 +40,7 @@ a:hover {
 }
 
 img:hover {
-    border-color: coral;
+    border-color: cornflowerblue;
 }
 
 .header {
@@ -59,7 +59,7 @@ img:hover {
     width: 100%;
     height: 11%;
 	text-align: right;
-    background-color: rgb(255, 132, 0); 
+    background-color: rgb(117, 159, 196); 
 }
 
 .side {
