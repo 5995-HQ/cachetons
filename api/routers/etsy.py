@@ -12,8 +12,9 @@ from datetime import date
 from fastapi import APIRouter, HTTPException
 from selenium import webdriver
 from requests.api import get, post
+from utils.words import random_word
 
-# http.client.HTTPConnection.debuglevel = 1
+http.client.HTTPConnection.debuglevel = 1
 
 router = APIRouter()
 
@@ -27,11 +28,13 @@ requests_log.propagate = True
 
 @router.get("/api/v1/etsy")
 async def get_name(subject: str = ""):
+    if subject == "":
+        subject = random_word()
     options = webdriver.FirefoxOptions()
     options.add_argument("--ignore-certificate-errors")
     options.add_argument("--incognito")
     options.add_argument("--headless")
-    driver = webdriver.Firefox(executable_path="/opt/geckodriver", firefox_options=options)
+    driver = webdriver.Firefox(executable_path="/opt/geckodriver", options=options)
     full_product = []
     # subject = "Quilting things"
     result_subject = f"https://www.etsy.com/search?q={subject}&order=most_relevant&view_type=gallery".replace(" ", "+")

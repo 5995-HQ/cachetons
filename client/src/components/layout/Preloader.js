@@ -12,6 +12,7 @@ export const Preloader = () => {
             </div>            
             <h2 className="text-center text-white text-xl font-semibold">Loading...</h2>
             <p className="w-1/3 text-center text-white">One moment while we collect results.</p>
+            <p className="w-1/3 text-center text-white">This may take a minute...</p>
         </div>
     );
 };

@@ -10,6 +10,7 @@ const Logs = ({ storefront, subject }) => {
 
 
     useEffect(() => {
+        setLoading(false);
         getLogs();
     }, [storefront, subject]);
 
@@ -17,7 +18,6 @@ const Logs = ({ storefront, subject }) => {
         setLoading(true);
         const res = await fetch(`/api/v1/${storefront.toLowerCase()}?subject=${subject}`);
         const data = await res.json();
-        console.log(data)
 
         setLogs(data);
         setLoading(false);
@@ -29,8 +29,7 @@ const Logs = ({ storefront, subject }) => {
     return (
         <div className="pl-96" >
             <ul role="list" className="grid grid-cols-10 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-                {!loading && logs.length === 0 ? (<center><h1>No logs to show.</h1></center>
-                ) : (
+                {!loading && !logs.results ? (<h1>No Results found</h1>) : (
                     logs.results.map(r => <LogItem r={r} key={r.id} />)
                 )}
             </ul>

@@ -5,6 +5,7 @@ import http.client
 import uuid
 
 from .. import constants
+from utils.words import random_word
 from bs4 import BeautifulSoup as bs
 from datetime import datetime
 from fastapi import APIRouter, HTTPException
@@ -23,14 +24,17 @@ requests_log.propagate = True
 @router.get("/api/v1/ebay")
 async def get_name(subject: str = ""):
     if subject == "":
-        subject = "beer brewing equipment"
+        subject = random_word()
     post_result = []
     link = f"https://www.ebay.com/sch/i.html?_from=R40&_nkw={subject}&_sacat=0&_ipg=192".replace(" ", "+")
     r = requests.get(link, headers=constants.HEADERS, stream=True)
     content_soup = bs(r.text, "html.parser")
     #  TODO: Regex to find the sku for this site.
-    ebay_results_section = content_soup.find("ul", class_="srp-list")
-    ebay_rows = ebay_results_section.find_all("li", class_="s-item")
+    try: 
+        ebay_results_section = content_soup.find("ul", class_="srp-list")
+        ebay_rows = ebay_results_section.find_all("li", class_="s-item")
+    except AttributeError:
+        return {"results": ""}
     for ebay_result in ebay_rows:
         post_title = ebay_result.find("h3", class_="s-item__title").text
         post_url = ebay_result.find(class_="s-item__link").get("href")
@@ -51,5 +55,5 @@ async def get_name(subject: str = ""):
                 image=post_image,
                 date=datetime.today().strftime("%b %d")
                 ))
-    return {"results": tuple([product for product in post_result])}
+    return {"results": [product for product in post_result]}
     

@@ -27,11 +27,12 @@ const SelectAndSearchStore = ({ sendSearch }) => {
                                 id="store"
                                 name="store"
                                 className="block w-full pl-3 pr-10 shadow-lg py-2.5 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-                                defaultValue="Craigslist"
-                            >
-                                <option>Craigslist</option>
-                                <option>Etsy</option>
-                                <option>Ebay</option>
+                                defaultValue="Pick a store"
+                            >   
+                                <option value="craigslist">Craigslist</option>
+                                <option value="ebay">Ebay</option>
+                                <option value="etsy">Etsy</option>
+                                
                             </select>
                         </div>
                     </div>
