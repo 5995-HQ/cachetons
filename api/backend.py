@@ -11,7 +11,7 @@ app = FastAPI()
 app.register_blueprint(apiRoutes, url_prefix="/api")
 
 # TODO: Find a way to specify which city you want to search.
-@app.get("/v1")
+@app.get("/api/v1")
 def read_item():
     return {"storefronts": ["Craigslist", "Ebay"]}
 
@@ -64,6 +64,6 @@ async def get_name(name, page: int = 0, subject: str = ""):
 
 
 # TODO: Grab a specific item
-@app.get("/items/{item_id}")
+@app.get("api/items/{item_id}")
 def read_item(item_id: int, q: Optional[str] = None):
     return {"item_id": item_id, "q": q}
