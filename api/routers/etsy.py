@@ -3,6 +3,7 @@ import logging
 import requests
 import re
 import time
+import uuid
 
 from bs4 import BeautifulSoup as bs
 from .. import constants
@@ -74,7 +75,7 @@ async def get_name(subject: str = ""):
         index +=1
         full_product.append(
             dict(
-                id=index,
+                id=(uuid.uuid4().hex),
                 image=image,
                 price=price,
                 title=clean_title_string,
