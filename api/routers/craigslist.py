@@ -7,16 +7,6 @@ from fastapi import APIRouter, HTTPException  #  Depends,
 
 router = APIRouter()
 
-
-# from ..dependencies import get_token_header
-
-# router = APIRouter(
-# prefix="/api/v1/craigslist",
-# tags=["craigsist"],
-# # dependencies=[Depends(get_token_header)],
-# responses={404: {"description": "Not found"}},
-# )
-
 """ Make a request like this:  Example: http://127.0.0.1:5000/api/v1/craigslist?page=1&subject=beer+brewing+equipment """
 
 

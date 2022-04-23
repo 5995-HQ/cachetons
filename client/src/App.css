@@ -43,9 +43,6 @@ img:hover {
     border-color: coral;
 }
 
-.header {
-  position: fixed;
-}
 
 .content {
   margin-top: 100px;

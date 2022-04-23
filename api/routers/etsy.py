@@ -10,6 +10,12 @@ from selenium import webdriver
 
 # http.client.HTTPConnection.debuglevel = 1
 
+"""
+Etsy's client side rendering is a real son of a bitch, and you need to run this in a headless browser. Doing that will collect the assets
+and then render them onto the page. This is a bit of a pain in the ass, but it works.
+
+"""
+
 router = APIRouter()
 
 """ Make a request like this:  Example: http://127.0.0.1:5000/api/v1/etsy?subject=beer+brewing+equipment """
@@ -26,7 +32,7 @@ async def get_name(subject: str = ""):
     options.add_argument("--ignore-certificate-errors")
     options.add_argument("--incognito")
     options.add_argument("--headless")
-    driver = webdriver.Firefox(executable_path="/opt/geckodriver", firefox_options=options)
+    driver = webdriver.Chrome(executable_path="/opt/geckodriver", chrome_options=options)
     headers = {"User-Agent": "Mozilla/5.0"}
     full_product = []
     # subject = "Quilting things"
