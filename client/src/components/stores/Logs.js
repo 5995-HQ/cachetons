@@ -11,25 +11,30 @@ const Logs = ({ storefront, subject }) => {
 
     useEffect(() => {
         getLogs();
-    }, [storefront, subject]);
+    }, [storefront, subject], []);
 
     const getLogs = async () => {
         setLoading(true);
-        const res = await fetch(`/api/v1/${storefront.toLowerCase()}?subject=${subject}`);
-        const data = await res.json();
-        console.log(data)
-
-        setLogs(data);
-        setLoading(false);
+        if (subject !== undefined) {
+            const res = await fetch(`/api/v1/${storefront.toLowerCase()}?subject=${subject}`);
+            const data = await res.json();
+            setLogs(data);
+            setLoading(false);
+        } else {
+            const res = ""
+            const data = ""
+            setLogs(data);
+            setLoading(false);
+        }
     }
     // TODO: Add a basic site template with empty square. 
     if (loading) {
         return <Preloader />;
     }
     return (
-        <div className="pl-96" >
+        <div className="pl-72 pr-72" >
             <ul role="list" className="grid grid-cols-10 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-                {!loading && logs.length === 0 ? (<p>No logs to show.</p>
+                {!loading && logs.length === 0 ? (<p></p>
                 ) : (
                     logs.results.map(r => <LogItem r={r} key={r.id} />)
                 )}
