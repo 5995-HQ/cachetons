@@ -3,7 +3,7 @@ import { Menu, Transition } from '@headlessui/react'
 
 
 const SelectAndSearchStore = ({ sendSearch }) => {
-    const [store, setStore] = useState('craigslist');
+    const [store, setStore] = useState('craigslist', 'ebay', 'etsy');
     const [search, setSearch] = useState('');
 
     const handleSubmit = (event) => {
@@ -14,26 +14,23 @@ const SelectAndSearchStore = ({ sendSearch }) => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <div className="ml-96">
-                    <div className="flex space-x-4">
-                        <div>
-                            <input id="search" placeholder="Search something..." type="search" onChange={r => setSearch(r.target.value)} className="shadow-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full mt-10 pr-12 sm:text-sm border-gray-300 rounded-md" />
-                        </div>
-                        <div>
-                            <select
-                                onChange={r => setStore(r.target.value)}
-                                id="store"
-                                name="store"
-                                className="block w-full pl-3 pr-10 shadow-lg  py-2.5 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md mt-10"
-                                defaultValue="Craigslist"
-                            >
-                                <option>Craigslist</option>
-                                <option>Etsy</option>
-                                <option>Ebay</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+                <div className="flex space-x-4 ml-96">
+                <input
+                    id="search"
+                    placeholder="Find anything you want"
+                        type="search"
+                        value={search}
+                        onChange={r => setSearch(r.target.value)}
+                        required
+                        className="px-48 py-4 placeholder placeholder-gray-500 text-base font-medium flex items-center text-black focus:outline-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500"
+                    />
+                    <button className="w-full bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500"
+                        onClick={() => setStore('craigslist')}>Craigslist</button>
+                    <button className="w-full bg-indigo-500 border border-transparent rounded-md py-2 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500"
+                        onClick={() => setStore('ebay')}>Ebay</button>
+                    <button className="w-full bg-indigo-500 border border-transparent rounded-md py-2 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500"
+                        onClick={() => setStore('etsy')}>Etsy</button>
+            </div>                                
             </form>
         </div>
     )
