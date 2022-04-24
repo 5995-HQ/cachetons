@@ -20,7 +20,7 @@ const App = () => {
     <div>
      <Header className="header"/>
       
-      <div className="px-10 pt-10 pb-20 relative flex items-center space-x-5">
+      <div className="pb-20">
         <SelectAndSearchStore sendSearch={(store, search) => sendSearch(store, search)} />
         <div>
         </div>
