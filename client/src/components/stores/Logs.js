@@ -32,7 +32,7 @@ const Logs = ({ storefront, subject }) => {
         return <Preloader />;
     }
     return (
-        <div className="pl-96" >
+        <div className="pl-72 pr-72" >
             <ul role="list" className="grid grid-cols-10 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
                 {!loading && logs.length === 0 ? (<p></p>
                 ) : (

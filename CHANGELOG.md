@@ -1,4 +1,10 @@
-## 2021-08-7
+
+## 2022-04-23
+- Add all new look and feel 
+- Split out the stores as their own buttons
+- Centering out and cleaning up the items
+
+## 2021-08-07
 - Add that tailwind chili, remove materialize
 
 ## 2021-06-05
